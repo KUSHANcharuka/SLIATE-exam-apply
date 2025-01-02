@@ -1,7 +1,7 @@
 
 
-// Current Year In the Heading
-document.getElementById("currentYear").textContent = new Date().getFullYear();
+        // Current Year In the Heading
+         document.getElementById("currentYear").textContent = new Date().getFullYear();
 
         // email validation
         function showerror() {
@@ -19,6 +19,37 @@ document.getElementById("currentYear").textContent = new Date().getFullYear();
             }
         }
 
+        // Password validation
+        function validatePasswords() {
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const passwordError = document.getElementById('passwordError');
+    
+            // Regular expression for high-security password
+            const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,}$/;
+    
+            // Clear previous error message
+            passwordError.textContent = "";
+    
+            // Check if the password meets security requirements
+            if (!passwordRegex.test(password)) {
+                passwordError.textContent =
+                    "Password must be at least 8 characters long, contain uppercase, lowercase, a number, and a special character.";
+                return;
+            }
+    
+            // Check if passwords match
+            if (password !== confirmPassword) {
+                passwordError.textContent = "Passwords do not match!";
+                return;
+            }
+    
+            // If everything is valid
+            alert("Registration successful!");
+        }
+
+
+        //applying subject selecting 
         const subjectsDropdown = document.getElementById("Subjects");
         const selectedSubjectsList = document.getElementById("selected-subjects");
 
@@ -55,3 +86,40 @@ document.getElementById("currentYear").textContent = new Date().getFullYear();
             // Append the list item to the selected subjects list
             selectedSubjectsList.appendChild(listItem);
         });
+
+
+
+         //Created time table showing function
+        function addToTimetable() {
+         const date = document.getElementById('date').value;
+         const division = document.getElementById('division').value;
+         const subject = document.getElementById('subject').value;
+         const startTime = document.getElementById('start-time').value;
+         const endTime = document.getElementById('end-time').value;
+
+         if (!date || !division || !subject || !startTime || !endTime) {
+        alert('Please fill in all fields!');
+        return;
+         }
+
+         const timetable = document.getElementById('timetable');
+         const entry = document.createElement('div');
+       entry.className = 'timetable-entry';
+       entry.innerHTML = `
+        <strong>Date:</strong> ${date} | 
+        <strong>Division:</strong> ${division} | 
+        <strong>Subject:</strong> ${subject} | 
+        <strong>Time:</strong> ${startTime} - ${endTime}
+    `;
+    timetable.appendChild(entry);
+
+    // Clear inputs
+    document.getElementById('date').value = '';
+    document.getElementById('division').value = '';
+    document.getElementById('subject').value = '';
+    document.getElementById('start-time').value = '';
+    document.getElementById('end-time').value = '';
+}
+
+
+

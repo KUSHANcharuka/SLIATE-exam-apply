@@ -61,8 +61,6 @@
                 <label for="email">E mail:</label>
                 <input type="email" id="emailField" spellcheck="false" placeholder="Enter Your E-mail Address" onkeyup="showerror()" required >
                 <span id="emailError"></span>
-
-
             </div>
 
             <div class="form-group">
@@ -74,8 +72,19 @@
                 </select>
             </div>
 
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter Password" required>
+            </div>
+
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" id="confirmPassword" placeholder="Confirm Your Password" required>
+                <span id="passwordError" style="color: red; font-size: 0.9rem;"></span>
+            </div>
+
             <div class="button-container">
-                <button type="submit">Sign Up</button>
+                <button type="submit" onclick="validatePasswords()">Sign Up</button>
             </div>
 
             <p class="login-message">Already registered? <a href="#">Log in</a></p>
@@ -86,6 +95,9 @@
     <img src="Images\best-laptops-copy-1_3rct.1248.webp" alt="Description of Image">
     </div>
 </div>
+
+
+
 
 <script src="script.js"></script>
 
