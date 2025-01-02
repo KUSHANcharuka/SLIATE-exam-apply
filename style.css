@@ -1,0 +1,147 @@
+body {
+    background-color:#ece000;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.heading {
+    text-align: center;
+    width: 80%;
+    margin: 20px auto;
+}
+
+.Personal-Details, .Academic-Details {
+    width: 80%;
+    background-color: rgb(240, 255, 127);
+    margin: 20px auto;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    vertical-align: top;
+}
+
+th {
+    width: 30%;
+}
+
+input, select {
+    border: 1px solid #ccc;
+    background: rgb(228, 227, 227);
+    padding: 8px;
+    font-size: 14px;
+    border-radius: 4px;
+    width: calc(100% - 16px);
+}
+
+input:focus, select:focus {
+    border-color: rgb(236, 224, 0);
+    outline: none;
+    box-shadow: 0 0 5px rgba(236, 224, 0, 0.5);
+}
+
+#emailError {
+    font-size: 14px;
+    font-weight: 400;
+    color: red;
+    margin-left: 10px;
+}
+
+.form-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr 2fr;
+    gap: 15px 20px;
+    align-items: center;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.form-container label {
+    font-weight: bold;
+}
+
+.form-container input, .form-container select {
+    width: 90%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.space {
+    width: 80%;
+    height: 5px;
+    background-color: #ece000;
+    margin: auto;
+}
+
+#Required-Subjects {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.center-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.Division-input-field, .Subjects-input-field {
+    width: 80%;
+    max-width: 1000px;
+    height: 40px;
+    font-size: 16px;
+    padding: 5px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin: 10px auto;
+    display: block;
+}
+
+.subject-list {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 20px;
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.subject-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    margin-bottom: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.subject-list button {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.subject-list button:hover {
+    background-color: #c0392b;
+}
