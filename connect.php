@@ -1,15 +1,15 @@
 <?php
 // Database connecting
-$host = "localhost";
+$hostname = "localhost";
 $username = "root";        
 $password = "";           
-$dbname = "slaite exam apply";
+$dbname = "exam_managment_system";
 
-$conn = new mysqli($host, $username, $password, $dbname);
+$conn = new mysqli($hostname, $username, $password, $dbname);
 
 // Checking connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+if (!$conn) {
+    die("There is an error");
 }
 
 ?>
