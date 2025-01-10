@@ -11,9 +11,9 @@ body {
     margin: 20px auto;
 }
 
-.Personal-Details, .Academic-Details {
+.Academic-Details {
     width: 80%;
-    background-color: rgb(240, 255, 127);
+    background-color: #f0ff7f;
     margin: 20px auto;
     padding: 15px;
     border-radius: 8px;
@@ -51,12 +51,6 @@ input:focus, select:focus {
     box-shadow: 0 0 5px rgba(236, 224, 0, 0.5);
 }
 
-#emailError {
-    font-size: 14px;
-    font-weight: 400;
-    color: red;
-    margin-left: 10px;
-}
 
 .form-container {
     display: grid;
