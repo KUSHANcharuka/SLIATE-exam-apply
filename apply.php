@@ -54,13 +54,13 @@
 </div>
 
         <div class="center-container">
-        <h3 id="Required-Subjects">Required Subjects</h3><br>
-        <select id="Division" name="Division" class="Division-input-field" required>
+        <h3 id="Required-Subjects">Required Subjects</h3>
+        <!-- <select id="Division" name="Division" class="Division-input-field" required>
             <option value="" disabled selected>Select Your Division</option>
             <option value="Agri">Agri Culture</option>
             <option value="Management">Management</option>
         </select>
-        <br>
+        <br> -->
         <select id="Subjects" name="Subjects" class="Subjects-input-field" required>
             <option value="" disabled selected>Select Your Subjects</option>
             <option value="AG1208">AG1208 - Field Crop Production</option>
@@ -68,20 +68,13 @@
             <option value="AG1210">AG1210 - Soil Science</option>
             <option value="MG2101">MG2101 - Business Management</option>
         </select>
-        <br><br>
+       
         <ul id="selected-subjects" class="subject-list"></ul>
     </div>
     </form>
 
-
-
- 
-    
-    
-
-   
-
 <script src="script.js"></script>
+
 </body>
 </html>
 

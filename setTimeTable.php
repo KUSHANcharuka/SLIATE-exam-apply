@@ -44,9 +44,14 @@
             <button type="button" onclick="addToTimetable()">Create</button>
         </div>
         <div class="timetable" id="timetable">
-            <h2>Timetable</h2>
-        </div>
+         <h2>Timetable</h2>
+         </div>
+          <!-- Print Button -->
+        <button type="button" onclick="printTimetable()">Print Timetable</button>
+        
     </div>
+
+
 
 
 

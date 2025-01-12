@@ -17,17 +17,9 @@ include "connect.php";
     <div class="form-container">
            <!-- Registration Section -->
     <div class="form-container">
-        <h2>  Register</h2>
+        <h2>  Lectruror Register</h2>
 
-
-        <form action="register.php" method="post">
-        <form action=""method="post">
-        <div class="form-group">
-                <label for="Select">Select: </label>
-                Lecturer<input type="radio"name="select"value="Lecturer">
-                Student<input type="radio"name="select"value="Student">
-            </div>
-
+        <form action="" method="post">
             <div class="form-group">
                 <label for="fullName">I. Name In Full</label>
                 <div class="input-row">
@@ -67,17 +59,12 @@ include "connect.php";
             </div>
 
             <div class="form-group">
-
             <label for="department">Department</label>
               <select id="department" name="department" required>
               <option value="" disabled selected>Select Your Division</option>
               <option value="Agri">Agri Culture</option>
               <option value="Management">Management</option>
              </select>
-
-                <label for="department">Department</label>
-                <input type="text" id="department" name="department" placeholder="Enter Your department" required>
-
             </div>
 
             <div class="form-group">
@@ -112,11 +99,7 @@ include "connect.php";
             </div>
 
             <div class="button-container">
-
                 <button type="submit" name="SUBMIT" onclick="validatePasswords()">Sign Up</button>
-
-                <button type="submit" name="SUBMIT"onclick="validatePasswords()">Sign Up</button>
-
 
             </div>
 
@@ -136,7 +119,3 @@ include "connect.php";
 
 </body>
 </html>
-
-
- 
-    
