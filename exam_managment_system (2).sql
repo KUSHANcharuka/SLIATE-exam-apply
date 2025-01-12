@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 03, 2025 at 03:39 PM
+-- Generation Time: Jan 12, 2025 at 02:49 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -72,6 +72,34 @@ CREATE TABLE `exam` (
 --
 
 CREATE TABLE `lecturer` (
+  `Registration_number` varchar(255) NOT NULL,
+  `title` varchar(4) NOT NULL,
+  `Full_Name` varchar(100) NOT NULL,
+  `name_with_initials` varchar(70) NOT NULL,
+  `gender` varchar(8) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `contact_number` varchar(15) NOT NULL,
+  `address` varchar(50) NOT NULL,
+  `deparment` varchar(20) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `confirm_password` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `lecturer`
+--
+
+INSERT INTO `lecturer` (`Registration_number`, `title`, `Full_Name`, `name_with_initials`, `gender`, `email`, `contact_number`, `address`, `deparment`, `password`, `confirm_password`) VALUES
+('001', 'Mr', 'sasia', 'sasika', 'male', 'sasiikka@gmail.com', '3456', 'homagama', 'computing', '200SAsa#', '200SAsa#'),
+('09', 'Mr', 'sasika', 'sasika', 'male', 'sasiikka@gmail.com', '3456', 'godagama', 'computing', '200SAsa#', '200SAsa#');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `lecturer2`
+--
+
+CREATE TABLE `lecturer2` (
   `Reg_number` varchar(255) NOT NULL,
   `full_name` varchar(100) NOT NULL,
   `name_with_initials` varchar(70) NOT NULL,
@@ -122,8 +150,37 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`Registration_number`, `title`, `Full_Name`, `name_with_initials`, `gender`, `email`, `contact_number`, `address`, `deparment`, `password`, `confirm_password`) VALUES
+('08', 'Mr', 'nimal', 'nimal', 'male', 'saman@gmail.com', '123456', 'homagama', 'computing', '200SAsa#', '200SAsa#'),
+('09', 'Mr', 'sasika', 'sasika', 'male', 'saman@gmail.com', '123456', 'godagama', 'xcfgh', '200SAsa#', '200SASa#'),
+('1', 'Mr', 'sasia', 'sasika', 'male', 'saman@gmail.com', '123456', 'godagama', 'computing', '200SAsa#', '200SAsa#'),
 ('123', 'Mr', 'saman', 'saman', 'male', 'saman@gmail.com', '12345678', 'homagama', 'computing', '200SAsa#', '200SAsa#'),
-('1234', 'Mr', 'lal', 'lal', 'male', 'lal@gmail.com', '9876543', 'homagama', 'computing', '200SAsa#', '200SAsa#');
+('1234', 'Mr', 'lal', 'lal', 'male', 'lal@gmail.com', '9876543', 'homagama', 'computing', '200SAsa#', '200SAsa#'),
+('2', 'Mr', 'sasia', 'sasika', 'male', 'sasiikka@gmail.com', '123456', 'godagama', 'bnhjhgfd', '200SAsa#', '200SAsa#'),
+('3', 'Mr', 'sasia', 'sasika', 'male', 'sasiikka@gmail.com', '123456', 'fdhfj', 'dfdgh', '200SAsa#', '200SAsa#'),
+('900', 'Mr', 'sasia', 'sasika', 'male', 'sasikaprabhashwara8@gmail.com', '3456', 'homagama', 'computing', '200SAsa#', '200SAsa#');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `studentapply`
+--
+
+CREATE TABLE `studentapply` (
+  `Registration_number` varchar(255) NOT NULL,
+  `course_name` varchar(50) NOT NULL,
+  `semester` varchar(3) NOT NULL,
+  `academic_year` varchar(10) NOT NULL,
+  `index_number` varchar(255) NOT NULL,
+  `devision_name` varchar(50) NOT NULL,
+  `subject` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `studentapply`
+--
+
+INSERT INTO `studentapply` (`Registration_number`, `course_name`, `semester`, `academic_year`, `index_number`, `devision_name`, `subject`) VALUES
+('sa', 'sa', 'I', '1', 'sa', 'Agri', 'AG1209');
 
 -- --------------------------------------------------------
 
@@ -134,6 +191,21 @@ INSERT INTO `student` (`Registration_number`, `title`, `Full_Name`, `name_with_i
 CREATE TABLE `student_enroll` (
   `Registration_number` varchar(255) NOT NULL,
   `exam_ID` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `timetable`
+--
+
+CREATE TABLE `timetable` (
+  `date` varchar(20) NOT NULL,
+  `devision` varchar(50) NOT NULL,
+  `subject` varchar(50) NOT NULL,
+  `start_time` varchar(6) NOT NULL,
+  `end_time` varchar(10) NOT NULL,
+  `TableID` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -162,6 +234,12 @@ ALTER TABLE `exam`
 -- Indexes for table `lecturer`
 --
 ALTER TABLE `lecturer`
+  ADD PRIMARY KEY (`Registration_number`);
+
+--
+-- Indexes for table `lecturer2`
+--
+ALTER TABLE `lecturer2`
   ADD PRIMARY KEY (`Reg_number`);
 
 --
@@ -177,10 +255,22 @@ ALTER TABLE `student`
   ADD PRIMARY KEY (`Registration_number`);
 
 --
+-- Indexes for table `studentapply`
+--
+ALTER TABLE `studentapply`
+  ADD PRIMARY KEY (`Registration_number`);
+
+--
 -- Indexes for table `student_enroll`
 --
 ALTER TABLE `student_enroll`
   ADD PRIMARY KEY (`Registration_number`,`exam_ID`);
+
+--
+-- Indexes for table `timetable`
+--
+ALTER TABLE `timetable`
+  ADD PRIMARY KEY (`TableID`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -191,6 +281,12 @@ ALTER TABLE `student_enroll`
 --
 ALTER TABLE `course`
   MODIFY `course_code` int(255) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `timetable`
+--
+ALTER TABLE `timetable`
+  MODIFY `TableID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
