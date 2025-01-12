@@ -1,6 +1,6 @@
 <?php
 //Add connection
-include "connect.php";
+include "../DBConnection/connect.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,7 +10,7 @@ include "connect.php";
     <title>Application Form</title>
     
     <!-- CSS link -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
     
 </head>
 <body>
