@@ -17,9 +17,9 @@ include "connect.php";
     <div class="form-container">
            <!-- Registration Section -->
     <div class="form-container">
-        <h2>  Register</h2>
+        <h2>  Lectruror Register</h2>
 
-        <form action="register.php" method="post">
+        <form action="" method="post">
             <div class="form-group">
                 <label for="fullName">I. Name In Full</label>
                 <div class="input-row">
@@ -119,11 +119,3 @@ include "connect.php";
 
 </body>
 </html>
-
-
-
-
-
-
- 
-    

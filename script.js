@@ -122,4 +122,44 @@
 }
 
 
+//to print the time table
+function printTimetable() {
+    // Create a new window for the print preview
+    const timetableContent = document.getElementById("timetable").innerHTML;
+    const printWindow = window.open("", "_blank");
+    
+    // Add content to the new window
+    printWindow.document.write(`
+        <html>
+            <head>
+                <title>Print Timetable</title>
+                <style>
+                    body {
+                        font-family: Arial, sans-serif;
+                        margin: 20px;
+                        padding: 0;
+                    }
+                    h2 {
+                        text-align: center;
+                        margin-bottom: 20px;
+                    }
+                    .timetable-entry {
+                        margin-bottom: 15px;
+                        border-bottom: 1px solid #ccc;
+                        padding-bottom: 10px;
+                    }
+                </style>
+            </head>
+            <body>
+                ${timetableContent}
+            </body>
+        </html>
+    `);
+
+    // Print the content
+    printWindow.document.close();
+    printWindow.print();
+}
+
+
 
