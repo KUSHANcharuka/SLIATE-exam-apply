@@ -1,6 +1,6 @@
 <?php
 //Add connection
-include "connect.php";
+include "../DBConnection/connect.php";
 ?>
 
 <!DOCTYPE html>
@@ -9,7 +9,7 @@ include "connect.php";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration Form</title>
-    <link rel="stylesheet" href="style1.css">
+    <link rel="stylesheet" href="../style1.css">
 </head>
 <body>
 
@@ -17,9 +17,9 @@ include "connect.php";
     <div class="form-container">
            <!-- Registration Section -->
     <div class="form-container">
-        <h2>  Lectruror Register</h2>
+        <h2>  Register</h2>
 
-        <form action="" method="post">
+        <form action=""method="post">
             <div class="form-group">
                 <label for="fullName">I. Name In Full</label>
                 <div class="input-row">
@@ -59,12 +59,8 @@ include "connect.php";
             </div>
 
             <div class="form-group">
-            <label for="department">Department</label>
-              <select id="department" name="department" required>
-              <option value="" disabled selected>Select Your Division</option>
-              <option value="Agri">Agri Culture</option>
-              <option value="Management">Management</option>
-             </select>
+                <label for="department">Department</label>
+                <input type="text" id="department" name="department" placeholder="Enter Your department" required>
             </div>
 
             <div class="form-group">
@@ -99,7 +95,7 @@ include "connect.php";
             </div>
 
             <div class="button-container">
-                <button type="submit" name="SUBMIT" onclick="validatePasswords()">Sign Up</button>
+                <button type="submit" name="SUBMIT"onclick="validatePasswords()">Sign Up</button>
 
             </div>
 
@@ -108,7 +104,7 @@ include "connect.php";
     </div>
     </div>
     <div class="image-container">
-    <img src="Images\best-laptops-copy-1_3rct.1248.webp" alt="Description of Image">
+    <img src="..\Images\best-laptops-copy-1_3rct.1248.webp" alt="Description of Image">
     </div>
 </div>
 
@@ -119,3 +115,49 @@ include "connect.php";
 
 </body>
 </html>
+
+
+
+<?php
+
+
+//Add details
+if(isset($_POST['SUBMIT'])){
+$title=$_POST['title'];
+$fullName=$_POST['fullName'];
+$nameWithInitials=$_POST['nameWithInitials'];
+$regNumber=$_POST['regNumber'];
+$address =$_POST['address'];
+$mobile =$_POST['mobile'];
+$email =$_POST['email'];
+$gender =$_POST['gender'];
+$password =$_POST['password'];
+$confirmPassword =$_POST['confirmPassword'];
+$department =$_POST['department'];
+
+//checking existing customer IDs
+$sql1="SELECT * FROM lecturer WHERE Registration_number='$regNumber'";
+$result1=$conn->query($sql1);
+if($result1->num_rows > 0) {
+    echo "<script>alert('You are already signup!')</script>";
+}else{
+//inserting customers
+$sql2 = "INSERT INTO `lecturer`(`Registration_number`,`title`,`Full_Name`,`name_with_initials`,
+`gender`,`email`,`contact_number`,`address`,`deparment`,`password`,`confirm_password`) 
+        VALUES('$regNumber','$title','$fullName','$nameWithInitials','$gender','$email',
+        '$mobile','$address','$department','$password','$confirmPassword')";
+
+$result2=$conn->query($sql2);
+
+if($result2){
+    echo "<script>alert('You successfully signup')</script>";
+}}
+}
+
+//closing connection
+$conn->close();
+?>
+
+
+ 
+    

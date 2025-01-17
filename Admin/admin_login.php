@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Login</title>
      <!-- CSS link -->
-    <link rel="stylesheet" href="style2.css"> 
+    <link rel="stylesheet" href="../style2.css"> 
 </head>
 <body>
     <div class="admin_login_container">

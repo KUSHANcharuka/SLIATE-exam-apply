@@ -1,6 +1,6 @@
 <?php
 //Add connection
-include "connect.php";
+include "../DBConnection/connect.php";
 ?>
 
 <!DOCTYPE html>
@@ -9,7 +9,7 @@ include "connect.php";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration Form</title>
-    <link rel="stylesheet" href="style1.css">
+    <link rel="stylesheet" href="../style1.css">
 </head>
 <body>
 
@@ -104,7 +104,7 @@ include "connect.php";
     </div>
     </div>
     <div class="image-container">
-    <img src="Images\best-laptops-copy-1_3rct.1248.webp" alt="Description of Image">
+    <img src="..\Images\best-laptops-copy-1_3rct.1248.webp" alt="Description of Image">
     </div>
 </div>
 
@@ -119,8 +119,7 @@ include "connect.php";
 
 
 <?php
-//Add connection
-include "connect.php";
+
 
 //Add details
 if(isset($_POST['SUBMIT'])){
