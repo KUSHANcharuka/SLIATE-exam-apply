@@ -25,6 +25,7 @@
             <div class="button-container">
                 <button type="submit">Login</button>
             </div>
+            <p class="register-message">Froget Password? <a href="#">Change Password</a></p>
         </form>
     </div>
 </body>

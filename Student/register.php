@@ -1,7 +1,8 @@
 <?php
-
 //Add connection
-include "connect.php";
+include "../DBConnection/connect.php";
+
+
 
 //Add details
 if(isset($_POST['SUBMIT'])){
@@ -22,8 +23,9 @@ $sql1="SELECT * FROM student WHERE Registration_number='$regNumber'";
 $result1=$conn->query($sql1);
 if($result1->num_rows > 0) {
     echo "<script>alert('You are already signup!')
-    window.history.back();
+    window.location.href = 'login.php';
     </script>";
+    
 }else{
 //inserting customers
 $sql2 = "INSERT INTO `student`(`Registration_number`,`title`,`Full_Name`,`name_with_initials`,
@@ -35,10 +37,32 @@ $result2=$conn->query($sql2);
 
 if($result2){
     echo "<script>alert('You successfully signup')
-    window.history.back();
+    window.location.href = 'login.php';
     </script>";
 }}
 }
+
+    
+    if (isset($_POST['submit'])) {
+        $regNumber=$_POST['regNumber'];
+        $password =$_POST['password'];
+
+        $sql = "select * from student where Registration_number = '$regNumber' and password = '$password'";  
+        $result = mysqli_query($conn, $sql);  
+        $row = mysqli_fetch_array($result, MYSQLI_ASSOC);  
+        $count = mysqli_num_rows($result);  
+        
+        if($count == 1){  
+            header("Location: apply.php");
+        }  
+        else{  
+            echo  '<script>
+                        window.location.href = "login.php";
+                        alert("Login failed. Invalid username or password!!")
+                    </script>';
+        }     
+    }
+
 
 //closing connection
 $conn->close();
