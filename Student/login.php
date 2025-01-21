@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
-    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="../style2.css">
 </head>
 <body>
 
@@ -22,10 +22,12 @@
             </div>
 
             <div class="button-container">
-                <button type="submit">Login</button>
+                <button type="submit" name="submit">Login</button>
             </div>
 
-            <p class="register-message">Don't have an account? <a href="signup.php">Register here</a></p>
+            <p class="register-message">Don't have an account? <a href="StudentSignup.php">Register here</a></p>
+            
+            <p class="register-message">Froget Password? <a href="froget_pwd.php">Change Password</a></p>
         </form>
     </div>
 

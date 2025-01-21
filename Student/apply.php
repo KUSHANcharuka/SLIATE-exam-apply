@@ -2,6 +2,7 @@
 //Add connection
 include "../DBConnection/connect.php";
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,9 +12,55 @@ include "../DBConnection/connect.php";
     
     <!-- CSS link -->
     <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../stylenav.css">
     
 </head>
 <body>
+
+        <!-- Profile Icon and Dropdown -->
+        <div class="nav-container">
+        <nav>
+            <img src="../Images/images.png" class="logo" alt="logo">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+            <img src="../Images/profile-user.png" class="user-pic" onclick="togglemenu();">
+            <div class="sub-menu-wrap" id="sub-menu-wrap">
+                <div class="sub-menu">
+                    <div class="user-info">
+                        <img src="../Images/profile-user.png">
+                        <h1>User Name</h1>
+                    </div>
+                    <hr>
+                    <a href="#" class="sub-menu-link">
+                        <img src="../Images/user-avatar.png">
+                        <p>Edit Profile</p>
+                        <span></span>
+                    </a>
+                    <a href="#" class="sub-menu-link">
+                        <img src="../Images/setting.png">
+                        <p>Setting</p>
+                        <span></span>
+                    </a>
+                    <a href="#" class="sub-menu-link">
+                        <img src="../Images/help-web-button.png">
+                        <p>Help</p>
+                        <span></span>
+                    </a>
+                    <a href="login.php" class="sub-menu-link">
+                        <img src="../Images/logout.png">
+                        <p>Log Out</p>
+                        <span></span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+
+
     <div class="heading">
         <h1 id="title">Sri Lanka Institute of Advanced Technological Education Examination - <span id="currentYear"></span></h1>
         <h2>Semester - I<br>Application Form</h2>
@@ -54,13 +101,7 @@ include "../DBConnection/connect.php";
 </div>
 
         <div class="center-container">
-        <h3 id="Required-Subjects">Required Subjects</h3><br>
-        <select id="Division" name="Division" class="Division-input-field" required>
-            <option value="" disabled selected>Select Your Division</option>
-            <option value="Agri">Agri Culture</option>
-            <option value="Management">Management</option>
-        </select>
-        <br>
+
         <select id="Subjects" name="Subjects" class="Subjects-input-field" required>
             <option value="" disabled selected>Select Your Subjects</option>
             <option value="AG1208">AG1208 - Field Crop Production</option>
@@ -72,11 +113,13 @@ include "../DBConnection/connect.php";
         <ul id="selected-subjects" class="subject-list"></ul>
     </div>
     <div>
-        <button type="submit" name="apply">Apply</button>
+        <button type="submit" name="apply" id="apply_btn">Apply</button>
     </div>
     </form>
+</div>    
 
 <script src="script.js"></script>
+
 </body>
 </html>
 
