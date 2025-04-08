@@ -23,12 +23,9 @@
         <h1 class="fw-bold mb-4">Admin's Page</h1>
         <!-- Navigation Buttons -->
         <div class="d-grid gap-3">
-            <a href="Timetable.php" class="btn btn-primary btn-lg">Set Timetables</a>
-            <a href="../Lecturer/LecturerSignup.php" class="btn btn-primary btn-lg">Create Lecturer Logins</a>
-            <a href="summary.php" class="btn btn-primary btn-lg">Get Exam Registration Summaries</a>
-            <a href="exam_result_summary.php" class="btn btn-primary btn-lg">Get Results Summaries</a>
-            <a href="approvels.php" class="btn btn-primary btn-lg">Approvals</a>
-            <a href="close_applications.php" class="btn btn-primary btn-lg">Close Applications</a>
+            <a href="close_applications_progress.php" class="btn btn-primary btn-lg">Close Applications</a>
+            <a href="close_timetable_progress.php" class="btn btn-primary btn-lg">Close Timetable</a>
+            
         </div>
     </div>
 

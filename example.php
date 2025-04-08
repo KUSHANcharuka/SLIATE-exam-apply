@@ -1,40 +1,66 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Email Validation</title>
-    <style>
-        #emailerror {
-            color: red;
-            font-size: 0.9rem;
-            margin-top: 5px;
-        }
-    </style>
+    <title>Subject Selection</title>
 </head>
 <body>
-    <div class="input-row">
-        <label for="email">Email Address:</label>
-        <input type="email" id="email" placeholder="Enter Your E-mail Address" onkeyup="showerror()" required>
-        <span id="emailerror"></span>
-    </div>  
+    <h2>Select Multiple Subjects</h2>
+    <form method="post" action="">
+        <label for="subjects">Choose Subjects:</label>
+        <select name="subjects[]" id="subjects" multiple required>
+            <option value="Mathematics">Mathematics</option>
+            <option value="Science">Science</option>
+            <option value="History">History</option>
+            <option value="English">English</option>
+            <option value="Arts">Arts</option>
+        </select>
+        <br><br>
+        <button type="submit" name="submit">Submit</button>
+    </form>
 
-    <script>
-        // Email validation function
-        function showerror() {
-            var emailError = document.getElementById("emailerror"); // Corrected the ID
-            var emailField = document.getElementById("email"); // Corrected the ID
+    <?php
+    if (isset($_POST['submit'])) {
+        // Database connection
+        $hostname = "localhost";
+        $username = "root";        
+        $password = "";           
+        $dbname = "lms";
+        $conn = new mysqli($hostname, $username, $password, $dbname);
 
-            // Regular expression to validate email format
-            var emailPattern = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$/;
-
-            // Check if the email field value matches the pattern
-            if (!emailField.value.match(emailPattern)) {
-                emailError.innerHTML = "Enter a valid email";
-            } else {
-                emailError.innerHTML = ""; // Clear error message if valid
-            }
+        // Check connection
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
         }
-    </script>
+
+        // Verify at least one subject is selected
+        if (!empty($_POST['subjects'])) {
+            $subjects = $_POST['subjects'];
+
+            // Prepare subjects for insertion into specific columns
+            $subject1 = isset($subjects[0]) ? $subjects[0] : NULL;
+            $subject2 = isset($subjects[1]) ? $subjects[1] : NULL;
+            $subject3 = isset($subjects[2]) ? $subjects[2] : NULL;
+            $subject4 = isset($subjects[3]) ? $subjects[3] : NULL;
+            $subject5 = isset($subjects[4]) ? $subjects[4] : NULL;
+
+            // Insert into the database
+            $sql = "INSERT INTO studentapply (subject1, subject2, subject3, subject4, subject5) VALUES (?, ?, ?, ?, ?)";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("sssss", $subject1, $subject2, $subject3, $subject4, $subject5);
+
+            if ($stmt->execute()) {
+                echo "Subjects successfully submitted!";
+            } else {
+                echo "Error: " . $stmt->error;
+            }
+
+            $stmt->close();
+        } else {
+            echo "Please select at least one subject.";
+        }
+
+        $conn->close();
+    }
+    ?>
 </body>
 </html>
