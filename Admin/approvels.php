@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>admin page</title>
+    <title>admin page approvals</title>
 
 
      <!-- bootstrap link -->
@@ -63,12 +63,8 @@
 
             <!-- admins option container -->
     <div class="adminOption-container">
-        <h1>Admin's Page</h1>
-        <a href="setTimeTable.php" class="button">Set Timetables</a>
-        <a href="../Lecturer/LecturerSignup.php" class="button">Create Lecture Logins</a>
-        <a href="summary.php" class="button">Get Exam Registration Summaries</a>
-        <a href="exam_result_summary.php" class="button">Get Results Summaries</a>
-        <a href="approvels.php" class="button">Approvals</a>
+        <h1>Approvalss</h1>
+         <a href="Markings Approvals.php" class="button">Markings Approvals</a>
     </div>
     
   </div> 

@@ -7,10 +7,7 @@ $dbname = "exam_managment_system";
 
 $conn = new mysqli($hostname, $username, $password, $dbname);
 
-// Checking connection
-if (!$conn) {
-    die("There is an error");
-}
 
+// Return the connection object
 return $conn;
 ?>

@@ -1,17 +1,74 @@
 <?php
-//Add connection
+// Add connection to the database
 include "../DBConnection/connect.php";
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Set Timetables</title>
+
+
+     <!-- bootstrap link -->
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dst/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="../style2.css">
+    <link rel="stylesheet" href="../stylenav.css">
 
 </head>
 <body>
+
+    <!-- Profile Icon and Dropdown -->
+    <div class="nav-container">
+        <nav>
+            <!-- Logo Image -->
+            <img src="../Images/images.png" class="logo">
+            <!-- Navigation Menu -->
+            <ul>
+                <li><a href="admin.php">Home</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+            <!-- User Profile Picture -->
+            <img src="../Images/profile-user.png" class="user-pic" onclick="togglemenu();">
+            <!-- Dropdown Menu -->
+            <div class="sub-menu-wrap" id="sub-menu-wrap">
+                <div class="sub-menu">
+                    <!-- User Information -->
+                    <div class="user-info">
+                        <img src="../Images/profile-user.png">
+                        <h1>User Name</h1>
+                    </div>
+                    <hr>
+                    <!-- Sub-menu links -->
+                    <a href="#" class="sub-menu-link">
+                        <img src="../Images/user-avatar.png">
+                        <p>Edit Profile</p>
+                        <span></span>
+                    </a>
+                    <a href="#" class="sub-menu-link">
+                        <img src="../Images/setting.png">
+                        <p>Setting</p>
+                        <span></span>
+                    </a>
+                    <a href="#" class="sub-menu-link">
+                        <img src="../Images/help-web-button.png">
+                        <p>Help</p>
+                        <span></span>
+                    </a>
+                    <a href="admin_login.php" class="sub-menu-link">
+                        <img src="../Images/logout.png">
+                        <p>Log Out</p>
+                        <span></span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+    <!-- Timetable Setting Form -->
     <div class="settimetable-container">
         <h1>Set Timetables</h1>
         <form action="" method="post">
@@ -44,51 +101,20 @@ include "../DBConnection/connect.php";
             <input type="time" id="end-time" name="end_time">
         </div>
         <div class="form-group" style="justify-content: center;">
-            <button type="submit" name="create">Create</button>
+            <button type="button" onclick="addToTimetable()">Create</button>
         </div>
+        <!-- Timetable Display -->
         <div class="timetable" id="timetable">
          <h2>Timetable</h2>
          </div>
-          <!-- Print Button -->
+         <!-- Print Button -->
         <button type="button" onclick="printTimetable()">Print Timetable</button>
         </form>
     </div>
-    <!-- onclick="addToTimetable()" -->
+</div>
 
-
-
-
-<script src="script.js"></script>
+    <!-- JavaScript file -->
+    <script src="script.js"></script>
 
 </body>
 </html>
-
-
-<?php
-if(isset($_POST["create"])){
-    $date = $_POST["date"];
-    $division = $_POST["division"];
-    $subject = $_POST["subject"];
-    $start_time = $_POST["start_time"];
-    $end_time = $_POST["end_time"];
-
-//checking
-$sql1="SELECT * FROM timetable WHERE subject='$subject'";
-$result1=$conn->query($sql1);
-if($result1->num_rows > 0) {
-    echo "<script>alert('This time table have been created previously!')</script>";
-}else{
-//inserting
-$sql2 = "INSERT INTO `timetable`(`date`,`devision`,`subject`,`start_time`,`end_time`) 
-        VALUES('$date','$division','$subject','$start_time','$end_time')";
-
-$result2=$conn->query($sql2);
-
-if($result2){
-    echo "<script>alert('Time Table was created successfully')</script>";
-}}
-}
-
-//closing connection
-$conn->close();
-?>

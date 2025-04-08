@@ -5,7 +5,10 @@ body {
     margin: 0;
     padding: 0;
     background-color:#ece000;
+    
 }
+
+
 .adminOption-container {
     margin: 50px auto;
     padding: 20px;
@@ -14,6 +17,26 @@ body {
     border: 2px solid #ddd;
     border-radius: 10px;
 }
+
+.lecturerOption-container {
+    margin: 50px auto;
+    padding: 20px;
+    max-width: 600px;
+    background-color: #f0ff7f;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+}
+
+.alredy_applied_container{
+    margin: 10% auto;
+    padding: 20px;
+    max-width: 600px;
+    background-color: #f0ff7f;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+
+}
+
 h1 {
     font-size: 24px;
     margin-bottom: 20px;
@@ -62,13 +85,15 @@ body {
     background-color:#ece000;
 }
 .settimetable-container {
-    width: 600px;
+    margin: 50px auto;
     padding: 20px;
+    max-width: 600px;
     background-color: #f0ff7f;
     border: 2px solid #ddd;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px
+
 }
+
 h1 {
     text-align: center;
     margin-bottom: 20px;
@@ -80,13 +105,31 @@ h1 {
     justify-content: space-between;
     align-items: center;
 }
+
+#grade , #year ,#semester, #department {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: rgb(228, 227, 227);
+    font-size: 14px;
+    width: 40%;
+}
+
 label {
     font-size: 16px;
     width: 30%;
 }
-input, select, button {
+input{
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: rgb(228, 227, 227);
+    font-size: 14px;
+}
+
+select, button {
     width: 65%;
-    padding: 10px;
+    padding: px;
     font-size: 16px;
     border: 1px solid #ddd;
     border-radius: 5px;
@@ -126,7 +169,31 @@ button:hover {
     margin: 50px auto;
     padding: 20px;
     max-width: 600px;
-    background-color: #f0ff7f;
-    border: 2px solid #000000;
+    background-color: #ffffff;
     border-radius: 10px;
+}
+
+
+.results-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+}
+
+.table-responsive {
+    width: 100%; /* Adjust as needed */
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+
+#btn_btn-primary{
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+   
+
 }
