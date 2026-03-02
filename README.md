@@ -200,9 +200,3 @@ For feedback, suggestions, or collaboration:
 If you found this project helpful, please consider giving it a ⭐
 
 ---
-
-💡 If you want next level upgrade, I can also:
-
-* Add **GitHub profile portfolio version**
-* Create **project presentation slides (for viva)**
-* Write **CV description for this project**
