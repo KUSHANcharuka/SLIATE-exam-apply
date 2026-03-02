@@ -4,43 +4,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Login</title>
-    <!-- Bootstrap link -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            background-color: #ffe100; 
-        }
-    </style>
+     <!-- CSS link -->
+    <link rel="stylesheet" href="../style2.css"> 
 </head>
-<body class=" d-flex justify-content-center align-items-center" style="height: 100vh;">
-
-    <!-- Admin login container -->
-    <div class="card p-4 shadow-lg text-center" style="width: 100%; max-width: 400px; background-color: #f0ff7f;">
-        <h2 class="fw-bold mb-4">Admin Login</h2>
-        <form method="POST" action="login_register.php">
-            <div class="mb-3">
-                <!-- Input Admin ID field -->
-                <label for="Director_ID" class="form-label">Admin ID</label>
-                <input type="text" id="Director_ID" name="Director_ID" class="form-control" placeholder="Enter your ID" required>
+<body>
+    <div class="admin_login_container">
+        <h2>Admin Login</h2>
+        <form method="POST" action="">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Enter your username" required>
             </div>
-            <!-- Input password field -->
-            <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" id="password" name="password" class="form-control" placeholder="Enter your password" required>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
             </div>
-            <!-- Buttons -->
-            <div class="d-grid">
-                <button type="submit" name="submit" class="btn btn-primary">Login</button>
+            <div class="button-container">
+                <button type="submit">Login</button>
             </div>
-            <p class="mt-3">
-                Forgot Password? <a href="froget_pwd.php" class="text-decoration-none">Change Password</a>
-            </p>
+            <p class="register-message">Froget Password? <a href="#">Change Password</a></p>
         </form>
     </div>
-
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

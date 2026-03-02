@@ -1,59 +1,7 @@
-const subjectsDropdown = document.getElementById("Subjects");
-const selectedSubjectsList = document.getElementById("selected-subjects");
-
-subjectsDropdown.addEventListener("change", function () {
-    const selectedValue = this.value;
-    const selectedText = this.options[this.selectedIndex].text;
-
-    const existingSubjects = Array.from(selectedSubjectsList.children).map(item => item.querySelector("span").textContent);
-    if (existingSubjects.includes(selectedText)) {
-        alert("This subject is already selected!");
-        return;
-    }
-
-    // Add Subject (AJAX)
-    const data = {
-        registration_number: document.getElementById("reg_number").value,
-        subject: selectedValue,
-        action: "add"
-    };
-
-    fetch("update_subjects.php", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data)
-    }).then(response => response.text())
-      .then(data => console.log(data));
-
-    // Update UI
-    const listItem = document.createElement("li");
-    listItem.className = "list-group-item d-flex justify-content-between align-items-center";
-
-    const subjectName = document.createElement("span");
-    subjectName.textContent = selectedText;
-
-    const removeButton = document.createElement("button");
-    removeButton.textContent = "Remove";
-    removeButton.className = "btn btn-danger btn-sm";
-    removeButton.addEventListener("click", function () {
-        selectedSubjectsList.removeChild(listItem);
-
-        // Remove Subject (AJAX)
-        const removeData = { ...data, action: "remove" };
-        fetch("update_subjects.php", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(removeData)
-        }).then(response => response.text())
-          .then(data => console.log(data));
-    });
-
-    listItem.appendChild(subjectName);
-    listItem.appendChild(removeButton);
-    selectedSubjectsList.appendChild(listItem);
-});
 
 
+        // Current Year In the Heading
+         document.getElementById("currentYear").textContent = new Date().getFullYear();
 
                    // email validation
                    function showerror() {
@@ -118,59 +66,72 @@ subjectsDropdown.addEventListener("change", function () {
 
                 
 
-        // //applying subject selecting 
-        // const subjectsDropdown = document.getElementById("Subjects");
-        // const selectedSubjectsList = document.getElementById("selected-subjects");
+        //applying subject selecting 
+        const subjectsDropdown = document.getElementById("Subjects");
+        const selectedSubjectsList = document.getElementById("selected-subjects");
 
-        // // Event listener for adding a subject
-        // subjectsDropdown.addEventListener("change", function () {
-        //     const selectedValue = this.value;
-        //     const selectedText = this.options[this.selectedIndex].text;
+        // Event listener for adding a subject
+        subjectsDropdown.addEventListener("change", function () {
+            const selectedValue = this.value;
+            const selectedText = this.options[this.selectedIndex].text;
 
-        //     // Check if the subject is already in the list
-        //     const existingSubjects = Array.from(selectedSubjectsList.children).map(item => item.querySelector('span').textContent);
-        //     if (existingSubjects.includes(selectedText)) {
-        //         alert("This subject is already selected!");
-        //         return;
-        //     }
+            // Check if the subject is already in the list
+            const existingSubjects = Array.from(selectedSubjectsList.children).map(item => item.querySelector('span').textContent);
+            if (existingSubjects.includes(selectedText)) {
+                alert("This subject is already selected!");
+                return;
+            }
 
-        //     // Create a new list item
-        //     const listItem = document.createElement("li");
+            // Create a new list item
+            const listItem = document.createElement("li");
 
-        //     // Add subject name
-        //     const subjectName = document.createElement("span");
-        //     subjectName.textContent = selectedText;
+            // Add subject name
+            const subjectName = document.createElement("span");
+            subjectName.textContent = selectedText;
 
-        //     // Add a remove button
-        //     const removeButton = document.createElement("button");
-        //     removeButton.textContent = "Remove";
-        //     removeButton.addEventListener("click", function () {
-        //         selectedSubjectsList.removeChild(listItem);
-        //     });
+            // Add a remove button
+            const removeButton = document.createElement("button");
+            removeButton.textContent = "Remove";
+            removeButton.addEventListener("click", function () {
+                selectedSubjectsList.removeChild(listItem);
+            });
 
-        //     // Append subject name and button to the list item
-        //     listItem.appendChild(subjectName);
-        //     listItem.appendChild(removeButton);
+            // Append subject name and button to the list item
+            listItem.appendChild(subjectName);
+            listItem.appendChild(removeButton);
 
-        //     // Append the list item to the selected subjects list
-        //     selectedSubjectsList.appendChild(listItem);
-        // });
+            // Append the list item to the selected subjects list
+            selectedSubjectsList.appendChild(listItem);
+        });
 
 
-
+                // OTP related 
+        
+        function moveFocus(currentInput, nextInputId) {
+            if (currentInput.value.length == currentInput.maxLength) {
+                document.getElementById(nextInputId).focus();
+            }
+        }
         
        
-
-        // Validate function for password reset page
-                        //validate form before submitting
-                        function validatethisForm(){
-                            validatePasswords(); 
-                    
-                            if (document.getElementById("passwordError").innerHTML !== "") {
-                                return false; // Stop form submission if errors have
-                            }
-                    
-                            return true; // Submit form - no errors
-                            }
+        function resendOtp() {
+            alert("OTP code resent. Please check your email.");
+        }
+      
+        function verifyOtp() {
+            const otp1 = document.getElementById("otp1").value;
+            const otp2 = document.getElementById("otp2").value;
+            const otp3 = document.getElementById("otp3").value;
+            const otp4 = document.getElementById("otp4").value;
+        
+            const otpCode = otp1 + otp2 + otp3 + otp4;
+        
+            if (otpCode.length === 4) {
+                alert("OTP Verified successfully!");
+                
+            } else {
+                alert("Please enter the full OTP.");
+            }
+        }
 
         

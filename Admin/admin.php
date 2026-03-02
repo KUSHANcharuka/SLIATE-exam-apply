@@ -1,38 +1,78 @@
-
-
+<?php
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Page</title>
+    <title>admin page</title>
 
-    <!-- Bootstrap link -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {background-color: #ffe100;} 
-    </style>
+   
+     <!-- CSS link -->
+     <link rel="stylesheet" href="../style2.css">
+     <link rel="stylesheet" href="../stylenav.css">
+    
+  
+
 </head>
-<body class="d-flex flex-column align-items-center justify-content-center" style="min-height: 100vh;">
+<body>
 
     <!-- Profile Icon and Dropdown -->
-    <?php include('navbar.php'); ?>
+    <div class="nav-container">
+        <nav>
+            <img src="../Images/images.png" class="logo" alt="logo">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+            <img src="../Images/profile-user.png" class="user-pic" onclick="togglemenu();">
+            <div class="sub-menu-wrap" id="sub-menu-wrap">
+                <div class="sub-menu">
+                    <div class="user-info">
+                        <img src="../Images/profile-user.png">
+                        <h1>User Name</h1>
+                    </div>
+                    <hr>
+                    <a href="#" class="sub-menu-link">
+                        <img src="../Images/user-avatar.png">
+                        <p>Edit Profile</p>
+                        <span></span>
+                    </a>
+                    <a href="#" class="sub-menu-link">
+                        <img src="../Images/setting.png">
+                        <p>Setting</p>
+                        <span></span>
+                    </a>
+                    <a href="#" class="sub-menu-link">
+                        <img src="../Images/help-web-button.png">
+                        <p>Help</p>
+                        <span></span>
+                    </a>
+                    <a href="admin_login.php" class="sub-menu-link">
+                        <img src="../Images/logout.png">
+                        <p>Log Out</p>
+                        <span></span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    
 
-    <!-- Admin Options Container -->
-    <div class="card p-4 shadow-lg text-center" style="width: 100%; max-width: 600px; background-color: #f0ff7f;">
-        <h1 class="fw-bold mb-4">Admin's Page</h1>
-        <!-- Navigation Buttons -->
-        <div class="d-grid gap-3">
-            <a href="Timetable.php" class="btn btn-primary btn-lg">Set Timetables</a>
-            <a href="../Lecturer/LecturerSignup.php" class="btn btn-primary btn-lg">Create Lecturer Logins</a>
-            <a href="summary.php" class="btn btn-primary btn-lg">Get Exam Registration Summaries</a>
-            <a href="exam_result_summary.php" class="btn btn-primary btn-lg">Get Results Summaries</a>
-            <a href="approvels.php" class="btn btn-primary btn-lg">Approvals</a>
-            <a href="close_applications.php" class="btn btn-primary btn-lg">Close Applications</a>
-        </div>
+
+    <div class="adminOption-container">
+        <h1>Admin's Page</h1>
+        <a href="setTimeTable.php" class="button">Set Timetables</a>
+        <a href="../Lecturer/LecturerSignup.php" class="button">Create Lecture Logins</a>
+        <a href="#" class="button">Get Exam Registration Summaries</a>
+        <a href="#" class="button">Get Results Summaries</a>
+        <a href="#" class="button">Approvals</a>
     </div>
+    
+  </div> 
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+ <script src="script.js"></script>
+
 </body>
 </html>

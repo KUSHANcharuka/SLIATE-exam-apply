@@ -1,173 +1,111 @@
+<?php
+//Add connection
+include "../DBConnection/connect.php";
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Set Timetables</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {background-color: #ffe100;} 
-        .card {background-color: #f0ff7f;} 
-    </style>
+
+        <!-- css links -->
+    <link rel="stylesheet" href="../style2.css">
+    <link rel="stylesheet" href="../stylenav.css">
+
 </head>
 <body>
 
-    <!-- Profile Icon and Dropdown -->
-    <?php include('navbar.php'); ?> 
+            <!-- Profile Icon and Dropdown -->
+    <div class="nav-container">
+        <nav>
+            <img src="../Images/images.png" class="logo">
+            <ul>
+                <li><a href="admin.php">Home</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+            <img src="../Images/profile-user.png" class="user-pic" onclick="togglemenu();">
+            <div class="sub-menu-wrap" id="sub-menu-wrap">
+                <div class="sub-menu">
+                    <div class="user-info">
+                        <img src="../Images/profile-user.png">
+                        <h1>User Name</h1>
+                    </div>
+                    <hr>
+                    <a href="#" class="sub-menu-link">
+                        <img src="../Images/user-avatar.png">
+                        <p>Edit Profile</p>
+                        <span></span>
+                    </a>
+                    <a href="#" class="sub-menu-link">
+                        <img src="../Images/setting.png">
+                        <p>Setting</p>
+                        <span></span>
+                    </a>
+                    <a href="#" class="sub-menu-link">
+                        <img src="../Images/help-web-button.png">
+                        <p>Help</p>
+                        <span></span>
+                    </a>
+                    <a href="admin_login.php" class="sub-menu-link">
+                        <img src="../Images/logout.png">
+                        <p>Log Out</p>
+                        <span></span>
+                    </a>
+                </div>
+            </div>
+        </nav>
 
-    <!-- Main Content -->
-    <div class="container mt-5 pt-3">
-        <h1 class="fw-bold text-center mb-4">Set Timetables</h1>
-        <form id="timetableForm" class="card p-4 shadow-lg">
-            <div class="row mb-3">
-                <label for="date" class="col-sm-4 col-form-label">Select Date:</label>
-                <div class="col-sm-8">
-                    <input type="date" id="date" name="date" class="form-control" required>
-                </div>
-            </div>
-            <div class="row mb-3">
-                <label for="department" class="col-sm-4 col-form-label">Select Department:</label>
-                <div class="col-sm-8">
-                    <select id="department" name="department" class="form-select" required>
-                        <option value="">Select Department</option>
-                        <option value="Computer Science">Computer Science</option>
-                        <option value="Information Technology">Information Technology</option>
-                        <option value="Business Administration">Business Administration</option>
-                    </select>
-                </div>
-            </div>
-            <div class="row mb-3">
-                <label for="subject" class="col-sm-4 col-form-label">Select Subject:</label>
-                <div class="col-sm-8">
-                    <select id="subject" name="subject" class="form-select" required>
-                        <option value="">Select Subject</option>
-                        <option value="Math">Math</option>
-                        <option value="Science">Science</option>
-                        <option value="History">History</option>
-                    </select>
-                </div>
-            </div>
-            <div class="row mb-3">
-                <label for="batch" class="col-sm-4 col-form-label">Select Batch:</label>
-                <div class="col-sm-8">
-                    <input type="text" id="batch" name="batch" class="form-control" placeholder="Enter Batch" required>
-                </div>
-            </div>
-            <div class="row mb-3">
-                <label for="year" class="col-sm-4 col-form-label">Year:</label>
-                <div class="col-sm-8">
-                    <select id="year" name="year" class="form-select" required>
-                        <option value="">Select Year</option>
-                        <?php
-                        for ($year = date("Y"); $year >= 2020; $year--) {
-                            echo "<option value=\"$year\">$year</option>";
-                        }
-                        ?>
-                    </select>
-                </div>
-            </div>
-            <div class="row mb-3">
-                <label for="semester" class="col-sm-4 col-form-label">Select Semester:</label>
-                <div class="col-sm-8">
-                    <select id="semester" name="semester" class="form-select" required>
-                        <option value="">Select Semester</option>
-                        <?php
-                        for ($i = 1; $i <= 8; $i++) {
-                            echo "<option value=\"$i\">Semester $i</option>";
-                        }
-                        ?>
-                    </select>
-                </div>
-            </div>
-            <div class="row mb-3">
-                <label for="start-time" class="col-sm-4 col-form-label">Start Time:</label>
-                <div class="col-sm-8">
-                    <input type="time" id="start-time" name="start_time" class="form-control" required>
-                </div>
-            </div>
-            <div class="row mb-3">
-                <label for="end-time" class="col-sm-4 col-form-label">End Time:</label>
-                <div class="col-sm-8">
-                    <input type="time" id="end-time" name="end_time" class="form-control" required>
-                </div>
-            </div>
-            <div class="d-flex justify-content-between">
-                <button type="button" class="btn btn-primary" onclick="addToTimetable()">Add to Timetable</button>
-                <button type="button" class="btn btn-secondary" onclick="window.location.href='admin.php';">Back</button>
-            </div>
+
+    <div class="settimetable-container">
+        <h1>Set Timetables</h1>
+        <form action="" method="post">
+        <div class="form-group">
+            <label for="date">Select Date:</label>
+            <input type="date" id="date" name="date">
+        </div>
+        <div class="form-group">
+            <label for="division">Select Division:</label>
+            <select id="division" name="division">
+                <option value="Division 1">Division 1</option>
+                <option value="Division 2">Division 2</option>
+                <option value="Division 3">Division 3</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="subject">Select Subjects:</label>
+            <select id="subject" name="subject">
+                <option value="Math">Math</option>
+                <option value="Science">Science</option>
+                <option value="History">History</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="start-time">Start Time:</label>
+            <input type="time" id="start-time" name="start_time">
+        </div>
+        <div class="form-group">
+            <label for="end-time">End Time:</label>
+            <input type="time" id="end-time" name="end_time">
+        </div>
+        <div class="form-group" style="justify-content: center;">
+            <button type="button" onclick="addToTimetable()">Create</button>
+        </div>
+        <div class="timetable" id="timetable">
+         <h2>Timetable</h2>
+         </div>
+          <!-- Print Button -->
+        <button type="button" onclick="printTimetable()">Print Timetable</button>
         </form>
-
-        <h2 class="fw-bold mt-4 text-center">Timetable</h2>
-        <div id="timetableDisplay" class="card p-3 mt-3 shadow-lg"></div>
-        <button id="finalizeButton" class="btn btn-success mt-3 d-none" onclick="finalizeTimetable()">Finalize</button>
     </div>
+</div>
+    <script src="script.js"></script>
 
-    <!-- JavaScript -->
-    <script>
-        const timetable = [];
-
-        function addToTimetable() {
-            const date = document.getElementById('date').value;
-            const department = document.getElementById('department').value;
-            const subject = document.getElementById('subject').value;
-            const batch = document.getElementById('batch').value;
-            const year = document.getElementById('year').value;
-            const semester = document.getElementById('semester').value;
-            const startTime = document.getElementById('start-time').value;
-            const endTime = document.getElementById('end-time').value;
-
-            if (!date || !department || !subject || !batch || !year || !semester || !startTime || !endTime) {
-                alert("Please fill all fields!");
-                return;
-            }
-
-            const entry = { date, department, subject, batch, year, semester, startTime, endTime };
-            timetable.push(entry);
-            updateTimetableDisplay();
-        }
-
-        function updateTimetableDisplay() {
-            const display = document.getElementById('timetableDisplay');
-            display.innerHTML = "";
-
-            timetable.forEach((entry, index) => {
-                const row = document.createElement('div');
-                row.className = "d-flex justify-content-between align-items-center border-bottom pb-2 mb-2";
-
-                row.innerHTML = `
-                    <span>${entry.date} - ${entry.department} - ${entry.subject} (${entry.batch}, ${entry.year}, Semester ${entry.semester}) (${entry.startTime} to ${entry.endTime})</span>
-                    <button class="btn btn-danger btn-sm" onclick="removeEntry(${index})">Remove</button>
-                `;
-                display.appendChild(row);
-            });
-
-            document.getElementById('finalizeButton').classList.toggle('d-none', timetable.length === 0);
-        }
-
-        function removeEntry(index) {
-            timetable.splice(index, 1);
-            updateTimetableDisplay();
-        }
-
-        function finalizeTimetable() {
-            fetch('save_timetable.php', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(timetable)
-            }).then(response => {
-                if (response.ok) {
-                    alert('Timetable saved successfully!');
-                    timetable.length = 0;
-                    updateTimetableDisplay();
-                } else {
-                    alert('Failed to save timetable!');
-                }
-            });
-        }
-    </script>
-
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+
+

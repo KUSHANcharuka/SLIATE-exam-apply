@@ -5,37 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Forgot Your Password</title>
    
-    <!-- Bootstrap link -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {background-color:#ffe100;}
-       form,.card {background-color: #f0ff7f;}
-    </style>
-</head>
-<body class="bg-warning.bg-gradient d-flex justify-content-center align-items-center" style="height: 100vh;"> 
+    <!-- CSS link -->
+    <link rel="stylesheet" href="../style.css">
 
-    <div class="container text-center">
-        <div class="card p-4 shadow-lg mx-auto" style="max-width: 400px;">
-            <!-- Icon container with a lock icon image -->
-            <div class="mb-4">
-                <img src="../Images/padlock.png" alt="Lock Icon" class="img-fluid" style="width: 50px; height: 50px;">
+</head>
+<body>
+
+<div class="container">
+        <div class="form-box">
+            <div class="icon-container">
+                <img src="../Images/padlock.png" alt="Lock Icon">
             </div>
-            <h2 class="fw-bold mb-4">Forgot Your Password?</h2>
-            <!-- Form for password reset -->
-            <form action="send-password-reset.php" method="post">
-                <div class="mb-3">
-                    <label for="email" class="form-label">Enter Your Email</label>
-                    <input type="email" id="email" name="email" class="form-control" placeholder="Enter your Email" required>
-                </div>
-                <!-- Buttons container -->
-                <div class="d-flex justify-content-between mt-4">
-                    <button type="button" onclick="window.location.href='login.php'" class="btn btn-secondary">Back</button>
-                    <button type="submit" class="btn btn-primary">Continue</button>
+            <h2>Forgot Your Password?</h2>
+            <form action="../send-password-reset.php" method="post">
+                <label for="email">Enter Your Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your Email" required>
+                <div class="button-container">
+                     <button type="button" onclick="window.location.href='login.php'" class="button" id="fg_pw_back_btn">Back</button>
+                     <button type="submit" class="button" id="fg_pw_continue_btn">Continue</button>
                 </div>
             </form>
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

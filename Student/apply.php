@@ -1,212 +1,158 @@
 <?php
-// Start session
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-
-// Ensure the user's full name is available in the session
-if (!isset($_SESSION['regNumber'])) {
-    $_SESSION['regNumber'] = "Guest";
-}
-
-if (!isset($_SESSION['department'])) {
-    $_SESSION['department'] = "Guest";
-}
-
-// Add connection to the database
+//Add connection
 include "../DBConnection/connect.php";
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Application Form</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            background-color: #ffe100;
-        }
-
-        .card {
-            background-color: #f0ff7f;
-        }
-    </style>
+    
+    <!-- CSS link -->
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../stylenav.css">
+    
 </head>
-
 <body>
-    <!-- Navbar -->
-    <?php include('navbar copy.php'); ?>
-    <br>
 
-    <!-- Application Form -->
-    <div class="container my-5">
-        <div class="text-center mb-4">
-            <h1 class="fw-bold">Sri Lanka Institute of Advanced Technological Education Examination - <span id="currentYear"></span></h1>
-            <h2 class="text-muted">Semester - I<br>Application Form</h2>
-        </div>
-
-        <div class="card p-4 shadow-sm">
-            <h3 class="card-title mb-3">Academic Details</h3>
-            <form action="" method="post">
-                <div class="row g-3">
-                    <!-- Course Name -->
-                    <div class="col-md-6">
-                        <label for="course_name" class="form-label">Name of the course:</label>
-                        <select id="course_name" name="course_name" class="form-select">
-                            <option value="">Select Course</option>
-                            <?php
-                            // Query to fetch unique course names from the course table
-                            $sql = "SELECT DISTINCT course_name FROM course WHERE course_name IS NOT NULL AND course_name != ''";
-                            $result = $conn->query($sql);
-
-                            // Populate the dropdown with course names
-                            if ($result->num_rows > 0) {
-                                while ($row = $result->fetch_assoc()) {
-                                    echo "<option value=\"" . htmlspecialchars($row['course_name']) . "\">" . htmlspecialchars($row['course_name']) . "</option>";
-                                }
-                            }
-                            ?>
-                        </select>
+        <!-- Profile Icon and Dropdown -->
+        <div class="nav-container">
+        <nav>
+            <img src="../Images/images.png" class="logo" alt="logo">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+            <img src="../Images/profile-user.png" class="user-pic" onclick="togglemenu();">
+            <div class="sub-menu-wrap" id="sub-menu-wrap">
+                <div class="sub-menu">
+                    <div class="user-info">
+                        <img src="../Images/profile-user.png">
+                        <h1>User Name</h1>
                     </div>
-
-                    <!-- Academic Year -->
-                    <div class="col-md-6">
-                        <label for="academic_year" class="form-label">Academic Year:</label>
-                        <select id="academic_year" name="academic_year" class="form-select">
-                            <option value="">Select Year</option>
-                            <?php
-                            // Query to fetch unique academic year values, excluding null and empty values
-                            $sql = "SELECT DISTINCT academic_year FROM course WHERE academic_year IS NOT NULL AND academic_year != ''";
-                            $result = $conn->query($sql);
-
-                            // Populate the dropdown with values
-                            if ($result->num_rows > 0) {
-                                while ($row = $result->fetch_assoc()) {
-                                    echo "<option value=\"" . htmlspecialchars($row['academic_year']) . "\">" . htmlspecialchars($row['academic_year']) . "</option>";
-                                }
-                            }
-                            ?>
-                        </select>
-                    </div>
-
-                    <!-- Registration Number -->
-                    <div class="col-md-6">
-                        <label for="reg_number" class="form-label">Registration Number:</label>
-                        <input type="text" id="reg_number" name="reg_number" class="form-control" placeholder="Enter Your Registration Number" value="<?php echo htmlspecialchars($_SESSION['regNumber']); ?>" readonly required>
-                    </div>
-                    <!-- Index Number -->
-                    <div class="col-md-6">
-                        <label for="index_no" class="form-label">Index No:</label>
-                        <input type="text" id="index_no" name="index_no" class="form-control" placeholder="Enter Your Index Number" required>
-                    </div>
-                    <!-- Semester -->
-                    <div class="col-md-6">
-                        <label for="semester" class="form-label">Semester:</label>
-                        <select id="semester" name="semester" class="form-select">
-                            <option value="">Select Semester</option>
-                            <?php
-                            // Query to fetch unique semester values, excluding null and empty values
-                            $sql = "SELECT DISTINCT semester FROM course WHERE semester IS NOT NULL AND semester != ''";
-                            $result = $conn->query($sql);
-
-                            // Populate the dropdown with values
-                            if ($result->num_rows > 0) {
-                                while ($row = $result->fetch_assoc()) {
-                                    echo "<option value=\"" . htmlspecialchars($row['semester']) . "\">Semester " . htmlspecialchars($row['semester']) . "</option>";
-                                }
-                            }
-                            ?>
-                        </select>
-                    </div>
-
-                    <!-- Hidden Input Field for Department -->
-                    <input type="hidden" name="department" value="<?php echo htmlspecialchars($_SESSION['department']); ?>">
+                    <hr>
+                    <a href="#" class="sub-menu-link">
+                        <img src="../Images/user-avatar.png">
+                        <p>Edit Profile</p>
+                        <span></span>
+                    </a>
+                    <a href="#" class="sub-menu-link">
+                        <img src="../Images/setting.png">
+                        <p>Setting</p>
+                        <span></span>
+                    </a>
+                    <a href="#" class="sub-menu-link">
+                        <img src="../Images/help-web-button.png">
+                        <p>Help</p>
+                        <span></span>
+                    </a>
+                    <a href="login.php" class="sub-menu-link">
+                        <img src="../Images/logout.png">
+                        <p>Log Out</p>
+                        <span></span>
+                    </a>
                 </div>
-
-                <!-- Subject Selection (Checkboxes) -->
-                <div class="mt-4">
-                    <h4>Select Your Subjects:</h4>
-                    <?php
-                    // Query to fetch included subjects from the course table
-                    $sql = "SELECT included_subjects FROM course WHERE included_subjects IS NOT NULL AND included_subjects != ''";
-                    $result = $conn->query($sql);
-
-                    // Check if results exist
-                    if ($result->num_rows > 0) {
-                        while ($row = $result->fetch_assoc()) {
-                            // Split the included_subjects into individual subjects using a delimiter (e.g., comma)
-                            $subjects = explode(',', $row['included_subjects']);
-                            foreach ($subjects as $subject) {
-                                $subject = trim($subject); // Remove any extra spaces
-                                echo "
-                    <div class='form-check'>
-                        <input type='checkbox' class='form-check-input' id='$subject' name='subjects[]' value='$subject'>
-                        <label for='$subject' class='form-check-label'>$subject</label>
-                    </div>";
-                            }
-                        }
-                    } else {
-                        echo "<p>No subjects found in the course table.</p>";
-                    }
-                    ?>
-                </div>
+            </div>
+        </nav>
 
 
-                <!-- Submit Button -->
-                <div class="text-center mt-4">
-                    <button type="submit" name="submit" id="apply_btn" class="btn btn-primary btn-lg">Apply</button>
-                </div>
-            </form>
-        </div>
+
+    <div class="heading">
+        <h1 id="title">Sri Lanka Institute of Advanced Technological Education Examination - <span id="currentYear"></span></h1>
+        <h2>Semester - I<br>Application Form</h2>
     </div>
-</body>
 
+       <!-- Acadamic Details Section -->
+    <div class="Academic-Details">
+    <h3 style="padding-left:5px; font-size:20px;">Academic Details</h3>
+
+    <form action="" method="post">
+    <div class="form-container">
+    <label for="course_name">Name of the course :</label>
+    <input type="text" id="course_name" name="course_name" spellcheck="false" placeholder="Enter Your course Name" required>
+
+    <label for="academic_year">Academic year :</label>
+    <select id="academic_year" name="academic_year" required>
+        <option value="" disabled selected>Academic Year</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+    </select>
+
+    <label for="reg_number">Registration Number :</label>
+    <input type="text" id="reg_number" name="reg_number" spellcheck="false" placeholder="Enter Your Registration Number" required>
+
+    <label for="index_no">Index No :</label>
+    <input type="text" id="index_no" name="index_no" spellcheck="false" placeholder="Enter Your Index Number" required>
+
+    <label for="semester">Semester :</label>
+    <select id="semester" name="semester" required>
+        <option value="" disabled selected>Semester</option>
+        <option value="I">I</option>
+        <option value="II">II</option>
+        <option value="III">III</option>
+        <option value="IV">IV</option>
+    </select>
+</div>
+
+        <div class="center-container">
+
+        <select id="Subjects" name="Subjects" class="Subjects-input-field" required>
+            <option value="" disabled selected>Select Your Subjects</option>
+            <option value="AG1208">AG1208 - Field Crop Production</option>
+            <option value="AG1209">AG1209 - Protective Crop Production & Floriculture</option>
+            <option value="AG1210">AG1210 - Soil Science</option>
+            <option value="MG2101">MG2101 - Business Management</option>
+        </select>
+        <br><br>
+        <ul id="selected-subjects" class="subject-list"></ul>
+    </div>
+    <div>
+        <button type="submit" name="apply" id="apply_btn">Apply</button>
+    </div>
+    </form>
+</div>    
+
+<script src="script.js"></script>
+
+</body>
 </html>
 
+
 <?php
-if (isset($_POST["submit"])) {
+if(isset($_POST["apply"])){
     $course_name = $_POST["course_name"];
     $academic_year = $_POST["academic_year"];
     $reg_number = $_POST["reg_number"];
     $index_no = $_POST["index_no"];
     $semester = $_POST["semester"];
-    $subjects = $_POST["subjects"];
-    $department = $_SESSION['department'];
+    $Division = $_POST["Division"];
+    $Subjects = $_POST["Subjects"];
 
-    // Check if the user has already applied
-    $sql1 = "SELECT * FROM studentapply WHERE Registration_number='$reg_number'";
-    $result1 = $conn->query($sql1);
-    if ($result1->num_rows > 0) {
-        echo "<script>alert('You have already applied!')</script>";
-    } else {
-        // Prepare subjects for dynamic insertion
-        $subject1 = isset($subjects[0]) ? $subjects[0] : NULL;
-        $subject2 = isset($subjects[1]) ? $subjects[1] : NULL;
-        $subject3 = isset($subjects[2]) ? $subjects[2] : NULL;
-        $subject4 = isset($subjects[3]) ? $subjects[3] : NULL;
-        $subject5 = isset($subjects[4]) ? $subjects[4] : NULL;
-        $subject6 = isset($subjects[5]) ? $subjects[5] : NULL;
-        $subject7 = isset($subjects[6]) ? $subjects[6] : NULL;
-        $subject8 = isset($subjects[7]) ? $subjects[7] : NULL;
-        $subject9 = isset($subjects[8]) ? $subjects[8] : NULL;
-        $subject10 = isset($subjects[9]) ? $subjects[9] : NULL;
+//checking 
+$sql1="SELECT * FROM student WHERE Registration_number='$reg_number'";
+$result1=$conn->query($sql1);
+if($result1->num_rows > 0) {
+    echo "<script>alert('You are already Apply!')</script>";
+}else{
+//inserting 
+$sql2 = "INSERT INTO `studentapply`(`Registration_number`,`course_name`,`semester`,
+`academic_year`,`index_number`,`devision_name`,`subject`) 
+        VALUES('$reg_number','$course_name','$semester','$academic_year','$index_no','$Division',
+        '$Subjects')";
 
-        // Insert into the database
-        $sql2 = "INSERT INTO studentapply (Registration_number, course_name, semester, academic_year, index_number, department, subject1, subject2, subject3, subject4, subject5, subject6, subject7, subject8, subject9, subject10) 
-                 VALUES ('$reg_number', '$course_name', '$semester', '$academic_year', '$index_no', '$department', '$subject1', '$subject2', '$subject3', '$subject4', '$subject5', '$subject6', '$subject7', '$subject8', '$subject9', '$subject10')";
-        if ($conn->query($sql2)) {
-            echo "<script>alert('You have successfully applied');</script>";
-        } else {
-            echo "<script>alert('Error: " . $conn->error . "');</script>";
-        }
-    }
+$result2=$conn->query($sql2);
 
-    $conn->close();
-    session_unset();
-    session_destroy();
+if($result2){
+    echo "<script>alert('You successfully apply')</script>";
+}}
 }
+
+//closing connection
+$conn->close();
 ?>

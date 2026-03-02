@@ -1,15 +1,5 @@
 <?php
-// Start session
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-
-// Ensure the user's full name is available in the session
-if (!isset($_SESSION['lecturer_id'])) {
-    $_SESSION['lecturer_id'] = "0000"; 
-}
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,29 +7,65 @@ if (!isset($_SESSION['lecturer_id'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lecturer Page</title>
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {background-color:#ffe100;}
-    </style>
+    <!-- CSS link -->
+    <link rel="stylesheet" href="../style2.css">
+    <link rel="stylesheet" href="../stylenav.css">
+
 </head>
+<body>
 
-<body class="bg-gradient d-flex flex-column align-items-center justify-content-center" style="height: 100vh;">
+                <!-- Profile Icon and Dropdown -->
+                <div class="nav-container">
+        <nav>
+            <img src="../Images/images.png" class="logo">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+            <img src="../Images/profile-user.png" class="user-pic" onclick="togglemenu();">
+            <div class="sub-menu-wrap" id="sub-menu-wrap">
+                <div class="sub-menu">
+                    <div class="user-info">
+                        <img src="../Images/profile-user.png">
+                        <h1>User Name</h1>
+                    </div>
+                    <hr>
+                    <a href="#" class="sub-menu-link">
+                        <img src="../Images/user-avatar.png">
+                        <p>Edit Profile</p>
+                        <span></span>
+                    </a>
+                    <a href="#" class="sub-menu-link">
+                        <img src="../Images/setting.png">
+                        <p>Setting</p>
+                        <span></span>
+                    </a>
+                    <a href="#" class="sub-menu-link">
+                        <img src="../Images/help-web-button.png">
+                        <p>Help</p>
+                        <span></span>
+                    </a>
+                    <a href="#" class="sub-menu-link">
+                        <img src="../Images/logout.png">
+                        <p>Log Out</p>
+                        <span></span>
+                    </a>
+                </div>
+            </div>
+        </nav>
 
 
-    <!-- Profile Icon and Dropdown -->
-    <?php include('navbar.php'); ?>
-
-    <!-- Lecturer Options Container -->
-    <div class="card p-4 shadow-lg text-center" style="width: 100%; max-width: 600px; background-color: #f0ff7f;">
-        <h1 class="fw-bold mb-4">Lecturer's Page</h1>
-        <!-- Buttons to navigate to different pages -->
-        <a href="eligibilityCheck.php" class="btn btn-primary btn-lg mb-3">Eligibility Check</a>
-        <a href="view_exam_timetable.php" class="btn btn-primary btn-lg mb-3">View Timetable</a>
-        <a href="addMarks.php" class="btn btn-primary btn-lg">Add Marks</a>
+    <div class="lecturerOption-container">
+        <h1>Lecturer's Page</h1>
+        <a href="eligibilityCheck.php" class="button">Eligibility Check</a>
+        <a href="viewTimeTable.php" class="button">View Timetable</a>
+        <a href="addMarks.php" class="button">Add Marks</a>
     </div>
+</div>
 
-    
+    <script src="script.js"></script>
 
 </body>
 </html>
