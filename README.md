@@ -150,7 +150,7 @@ git clone https://github.com/KUSHANcharuka/SLIATE-exam-apply.git
 Update database credentials in:
 
 ```
-config.php
+connect.php
 ```
 
 ### 5️⃣ Run Project
