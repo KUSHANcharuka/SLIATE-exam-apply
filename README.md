@@ -121,7 +121,6 @@ SLIATE-exam-apply/
 ├── Database/
 ├── assets/
 ├── includes/
-└── index.php
 ```
 
 ---
