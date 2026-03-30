@@ -1,7 +1,3 @@
-Here’s an upgraded **CV-level professional README.md** with badges + screenshots section 👇
-
----
-
 # 🎓 Online Exam Apply & Management System
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/KUSHANcharuka/SLIATE-exam-apply?color=blue)
